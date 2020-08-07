@@ -16,6 +16,9 @@
 subprojects {
   apply plugin: 'java'
   
+  // https://github.com/eerohele/saxon-gradle
+  apply plugin: 'com.github.eerohele.saxon-gradle'
+   
   task createPublishedOutputsDirs {  
 	doLast {
 		logger.info(rootProject.ext.get('published.outputs.files'))
@@ -25,6 +28,8 @@ subprojects {
 	    mkdir rootProject.file(rootProject.ext.get('published.outputs.events'))
 	}
   }
+  
+
   
   task copyXMLFilesToPublishedOutputs(type: Copy) {
     dependsOn createPublishedOutputsDirs
